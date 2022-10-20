@@ -14,9 +14,3 @@ IMAGES_RESULT_FIELD = 'images'
 class FishItem(scrapy.Item):
 	species = scrapy.Field()
 	image = scrapy.Field()
-	size = scrapy.Field()
-
-# class FishbaseItem(scrapy.Item):
-#     # define the fields for your item here like:
-#     # name = scrapy.Field()
-#     pass
