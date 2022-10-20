@@ -30,8 +30,8 @@ class ColorDescriptor:
 		(smallX, smallY) = (int(w * 0.35) / 2, int(h * 0.35) / 2)
 		ellipMask = np.zeros(image.shape[:2], dtype = "uint8")
 		smallMask = np.zeros(image.shape[:2], dtype = "uint8")
-		cv2.ellipse(ellipMask, (cX, cY), (axesX, axesY), 0, 0, 360, 255, -1)
-		cv2.ellipse(smallMask, (cX, cY), (smallX, smallY), 0, 0, 360, 255, -1)
+		cv2.ellipse(ellipMask, (int(cX), int(cY)), (int(axesX), int(axesY)), 0, 0, 360, 255, -1)
+		cv2.ellipse(smallMask, (int(cX), int(cY)), (int(smallX), int(smallY)), 0, 0, 360, 255, -1)
 
 		# loop over the different corner segments
 		for (startX, endX, startY, endY) in segments:
