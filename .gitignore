@@ -6,6 +6,7 @@ share/
 etc/
 twisted/
 pyvenv.cfg
+*.pyc 
 
 ############## Python ##############
 # from: https://github.com/github/gitignore/blob/main/Python.gitignore
