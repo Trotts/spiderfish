@@ -24,17 +24,15 @@ missingSpeciesDF <- data.frame(Species = species[(species %in% jsonSpecies)==FAL
 picSpecies <- pictures$species # list of species names from JSON file
 picURL <- unlist(pictures$image) # URLs from JSON file (some duplicates)
 picURL <- substr(picURL, nchar(picURL)-11, nchar(picURL)) # get just relevant part of url
-picSize <- unlist(pictures$size)
 
 allPath <- dir(paste(args[2], '/', args[1], '/All', sep=""), pattern = '*.jpg')
 
 speciesURL <- paste(args[2], '/', args[1], '/', args[1], '_speciesURLs.csv', sep="")
 
 # only keep image urls that got used as permanent URLs in saving
-speciesURLDF <- data.frame(Image=picURL, Species=picSpecies, Size.cm=picSize)
+speciesURLDF <- data.frame(Image=picURL, Species=picSpecies)
 speciesURLDF <- speciesURLDF[picURL %in% allPath, ]
 speciesURLDF <- speciesURLDF[order(speciesURLDF$Image),]
-
 
 # of species that have a photograph, some probably only have a crummy photo (sorted into 'Fail')
 # so let's get a list of species that didn't get a 'Pass' photo
@@ -49,41 +47,18 @@ failOnlyDF <- as.character(unique(failSpecies$Species)[(unique(failSpecies$Speci
 failOnlyDF <- data.frame(Species=failOnlyDF)
 failOnly <- paste(args[2], '/', args[1], '/', args[1], '_failOnly.csv', sep="")
 
-if (length(species[(species %in% jsonSpecies)==FALSE])==0){
-  message("No missing species.")
-} else {
+if (!length(species[(species %in% jsonSpecies)==FALSE])==0){
   write.csv(x=missingSpeciesDF, row.names=FALSE, file=missingSpecies)
-  message(paste(length(species[(species %in% jsonSpecies)==FALSE]),
-                " species missing.", sep=""))
-  message(paste("List of missing species is saved in ", missingSpecies, ".", sep=""))
 }
 
 write.csv(x=speciesURLDF, row.names=FALSE,
           file=speciesURL)
 
-message("")
-
-if (length(species[(species %in% jsonSpecies)==TRUE])==1) {
-  message(paste(length(species[(species %in% jsonSpecies)==TRUE]),
-                " species has at least one image.", sep=""))
-} else {
-  message(paste(length(species[(species %in% jsonSpecies)==TRUE]),
-                " species have at least one image.", sep=""))
-}
-
 if (dim(failOnlyDF)[1]==0){
-  message(paste("Of these species, all have at least one usable image passed by the image classifier.", sep=""))
 } else if (dim(failOnlyDF)[1]==1){
-  message(paste("Of these species, ", dim(failOnlyDF)[1], " species has only images rejected by the image classifier.", sep=""))
-  message(paste("This species is stored in ", failOnly, ".", sep=""))
   write.csv(x=failOnlyDF, row.names=FALSE,
             file=failOnly)
 } else {
-  message(paste("Of these species, ", dim(failOnlyDF)[1], " species have only images rejected by the image classifier.", sep=""))
-  message(paste("A list of these species is stored in ", failOnly, ".", sep=""))
   write.csv(x=failOnlyDF, row.names=FALSE,
             file=failOnly)
 }
-
-message("")
-message(paste("Corresponding species and image names are saved in ", speciesURL, ".", sep=""))
