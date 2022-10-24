@@ -38,7 +38,7 @@ where `/PATH/TO/families.csv` points to a CSV file containing a list of fish fam
 
 After 1-2 minutes of initialising, Scrapy usually downloads images at about 50-100 images/minute from Fishbase. This is by far the longest step. Once it finishes, the image classifier and species tallies take a few seconds to run.
 
-Scrapy by default attempts to scrawl `fishbase.net.br`. Check this Fishbase mirror is operational before running. If not, the mirror used can be changed by modifying the `allowed_domains` and `start_urls` in `spiderfish/fishbase/spiders/spider_fish.py`. 
+Scrapy by default attempts to crawl `fishbase.net.br`. Check this Fishbase mirror is operational before running. If not, the mirror used can be changed by modifying the `allowed_domains` and `start_urls` in `spiderfish/fishbase/spiders/spider_fish.py`. 
 
 ### Requirements
 
