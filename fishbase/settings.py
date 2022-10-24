@@ -73,7 +73,7 @@ ITEM_PIPELINES = { 'fishbase.pipelines.fishImagesPipeline':1,
 'scrapy.contrib.pipeline.images.FilesPipeline':1,
 }
 
-IMAGES_STORE = './fishbase/output'
+IMAGES_STORE = './output'
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See http://doc.scrapy.org/en/latest/topics/autothrottle.html

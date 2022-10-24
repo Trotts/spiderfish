@@ -19,8 +19,8 @@ class FishSpider(scrapy.Spider):
     def __init__(self, family=None, *args, **kwargs):
         super(FishSpider, self).__init__(*args, **kwargs)
         dispatcher.connect(stop_reactor, signal=signals.spider_closed)
-        self.allowed_domains = ["fishbase.se"]
-        self.start_urls = ["http://www.fishbase.se/Nomenclature/FamilySearchList.php?Family="+family]
+        self.allowed_domains = ["fishbase.net.br"]
+        self.start_urls = ["http://www.fishbase.net.br/Nomenclature/FamilySearchList.php?Family="+family]
 
     def parse(self, response):
         # picks up all the links to species pages for this family
