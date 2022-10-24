@@ -42,5 +42,4 @@ Scrapy by default attempts to scrawl `fishbase.net.br`. Check this Fishbase mirr
 
 ### Requirements
 
-For a list of python requirements, see `requirements.txt`. 
-Tested using R version 4.2.1 (2022-06-23) "Funny-Looking Kid", and [rfishbase](https://cran.r-project.org/web/packages/rfishbase/rfishbase.pdf) version 4.0.0.
+For a list of python requirements, see `requirements.txt`. Tested using Python 3.9.0, R 4.2.1 (2022-06-23) "Funny-Looking Kid", and [rfishbase](https://cran.r-project.org/web/packages/rfishbase/rfishbase.pdf) version 4.0.0.
