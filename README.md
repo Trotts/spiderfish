@@ -27,6 +27,8 @@ To clone the repository onto your computer:
 git clone https://github.com/Trotts/spiderfish
 ```
 
+Before running, set the `swd` variable in `go_fishing.sh` to the absolute filepath of the cloned spiderfish repo.
+
 Running the pipeline is performed using:
 
 ```bash
@@ -34,7 +36,7 @@ cd spiderfish
 bash go_fishing.sh /PATH/TO/families.csv /PATH/TO/OUTPUT/DIR
 ```
 
-where `/PATH/TO/families.csv` points to a CSV file containing a list of fish families to scrape (see `example_input.csv` for an example input) and `/PATH/TO/OUTPUT/DIR` is the location to store the scraped and filtered images. The bash script must be ran from within the `spiderfish` folder.
+where `/PATH/TO/families.csv` points to a CSV file containing a list of fish families to scrape (see `example_input.csv` for an example input) and `/PATH/TO/OUTPUT/DIR` is the location to store the scraped and filtered images. This must be passed as an absolute filepath! The bash script must be ran from within the `spiderfish` folder.
 
 After 1-2 minutes of initialising, Scrapy usually downloads images at about 50-100 images/minute from Fishbase. This is by far the longest step. Once it finishes, the image classifier and species tallies take a few seconds to run.
 
